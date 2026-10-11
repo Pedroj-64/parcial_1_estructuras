@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -17,6 +18,7 @@ import java.util.TreeSet;
 import com.uniquindio.edu.strucst.exception.DuplicateEntityException;
 import com.uniquindio.edu.strucst.model.Parcel;
 import com.uniquindio.edu.strucst.model.ParcelStatus;
+
 
 public class ParcelRepository {
     private final Map<String, Parcel> parcelsByCode = new HashMap<>();
@@ -48,6 +50,12 @@ public class ParcelRepository {
 
     public Optional<Parcel> findByCode(String code) {
         return code == null ? Optional.empty() : Optional.ofNullable(parcelsByCode.get(code.trim()));
+    }
+
+    public LinkedList<Parcel> listOfPending() {
+        LinkedList<Parcel> pendingList = new LinkedList<>();
+        registrationOrder.stream().filter(parcel -> parcel.isPending()).forEach(pendingList::add);
+        return pendingList;
     }
 
     public List<Parcel> findAllInRegistrationOrder() {
