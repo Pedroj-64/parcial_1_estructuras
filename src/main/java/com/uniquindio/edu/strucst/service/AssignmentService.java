@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import com.uniquindio.edu.strucst.exception.AssignmentException;
 import com.uniquindio.edu.strucst.model.Assignment;
+import com.uniquindio.edu.strucst.model.Courier;
 import com.uniquindio.edu.strucst.model.Parcel;
 import com.uniquindio.edu.strucst.model.ParcelStatus;
 
