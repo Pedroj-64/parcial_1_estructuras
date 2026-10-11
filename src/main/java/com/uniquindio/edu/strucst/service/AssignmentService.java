@@ -5,6 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import com.uniquindio.edu.strucst.exception.AssignmentException;
+import com.uniquindio.edu.strucst.model.Assignment;
+import com.uniquindio.edu.strucst.model.Parcel;
+import com.uniquindio.edu.strucst.model.ParcelStatus;
+
 public class AssignmentService {
     private final Map<String, Assignment> activeAssignments = new HashMap<>();
     private final DeliveryHistory history;

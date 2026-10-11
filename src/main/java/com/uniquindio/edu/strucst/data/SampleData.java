@@ -2,6 +2,10 @@ package com.uniquindio.edu.strucst.data;
 
 import java.util.List;
 
+import com.uniquindio.edu.strucst.facade.DistributionCenter;
+import com.uniquindio.edu.strucst.model.Courier;
+import com.uniquindio.edu.strucst.model.Parcel;
+
 public class SampleData {
 
     private SampleData() {

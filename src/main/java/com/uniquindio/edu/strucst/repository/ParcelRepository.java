@@ -14,6 +14,10 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import com.uniquindio.edu.strucst.exception.DuplicateEntityException;
+import com.uniquindio.edu.strucst.model.Parcel;
+import com.uniquindio.edu.strucst.model.ParcelStatus;
+
 public class ParcelRepository {
     private final Map<String, Parcel> parcelsByCode = new HashMap<>();
     private final List<Parcel> registrationOrder = new ArrayList<>();

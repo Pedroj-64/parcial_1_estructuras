@@ -3,6 +3,8 @@ package com.uniquindio.edu.strucst.dispatch;
 import java.util.Optional;
 import java.util.Queue;
 
+import com.uniquindio.edu.strucst.model.Parcel;
+
 public abstract class QueueDispatchStrategy implements DispatchStrategy {
     private final Queue<Parcel> queue;
 

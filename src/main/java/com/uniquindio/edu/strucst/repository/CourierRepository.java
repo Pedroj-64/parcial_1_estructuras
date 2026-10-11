@@ -10,6 +10,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
+import com.uniquindio.edu.strucst.exception.DuplicateEntityException;
+import com.uniquindio.edu.strucst.exception.EntityNotFoundException;
+import com.uniquindio.edu.strucst.model.Courier;
+
 public class CourierRepository {
 
     private final Map<String, Courier> couriersById = new LinkedHashMap<>();
