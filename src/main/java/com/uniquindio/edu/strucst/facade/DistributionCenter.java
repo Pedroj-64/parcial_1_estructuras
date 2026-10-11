@@ -10,7 +10,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.SortedSet;
 
-import com.uniquindio.edu.strucst.comparator.ParcelComparators;
 import com.uniquindio.edu.strucst.dispatch.ArrivalOrderDispatchStrategy;
 import com.uniquindio.edu.strucst.dispatch.DispatchMode;
 import com.uniquindio.edu.strucst.dispatch.DispatchStrategy;
@@ -19,6 +18,7 @@ import com.uniquindio.edu.strucst.exception.AssignmentException;
 import com.uniquindio.edu.strucst.model.Assignment;
 import com.uniquindio.edu.strucst.model.Courier;
 import com.uniquindio.edu.strucst.model.Parcel;
+import com.uniquindio.edu.strucst.model.comparator.ParcelComparators;
 import com.uniquindio.edu.strucst.repository.CourierRepository;
 import com.uniquindio.edu.strucst.repository.ParcelRepository;
 import com.uniquindio.edu.strucst.service.AssignmentService;
@@ -49,8 +49,17 @@ public class DistributionCenter {
         strategies.values().forEach(strategy -> strategy.enqueue(parcel));
     }
 
+    public void registerParcels(Collection<Parcel> parcels) {
+        parcels.forEach(this::registerParcel);
+        parcels.forEach(parcel -> strategies.values().forEach(strategy -> strategy.enqueue(parcel)));
+    }
+
     public void registerCourier(Courier courier) {
         couriers.save(courier);
+    }
+
+    public void registerCouriers(Collection<Courier> couriers) {
+        couriers.forEach(this::registerCourier);
     }
 
     public boolean parcelExists(String code) {
@@ -67,6 +76,10 @@ public class DistributionCenter {
 
     public Collection<Courier> couriers() {
         return couriers.findAll();
+    }
+
+    public Collection<Parcel> parcels() {
+        return parcels.findAllInRegistrationOrder();
     }
 
     public List<Parcel> parcelsInRegistrationOrder() {

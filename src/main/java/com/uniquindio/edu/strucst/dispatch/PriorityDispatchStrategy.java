@@ -2,7 +2,7 @@ package com.uniquindio.edu.strucst.dispatch;
 
 import java.util.PriorityQueue;
 
-import com.uniquindio.edu.strucst.comparator.ParcelComparators;
+import com.uniquindio.edu.strucst.model.comparator.ParcelComparators;
 
 public class PriorityDispatchStrategy extends QueueDispatchStrategy {
     

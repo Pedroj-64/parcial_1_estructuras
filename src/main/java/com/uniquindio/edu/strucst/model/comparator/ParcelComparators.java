@@ -1,4 +1,4 @@
-package com.uniquindio.edu.strucst.comparator;
+package com.uniquindio.edu.strucst.model.comparator;
 
 import java.util.Comparator;
 

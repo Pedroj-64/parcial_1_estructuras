@@ -9,7 +9,7 @@ import com.uniquindio.edu.strucst.exception.ValidationException;
  *
  * <p><b>Orden natural:</b> los paquetes se comparan por su código en orden ascendente
  * ({@link Comparable}). Los criterios alternativos (prioridad, peso, tiempo) viven en
- * {@link com.uniquindio.edu.strucst.comparator.ParcelComparators} y no alteran este orden.</p>
+ * {@link com.uniquindio.edu.strucst.model.comparator.ParcelComparators} y no alteran este orden.</p>
  *
  * <p><b>Identidad:</b> dos paquetes son iguales si tienen el mismo código, coherente con
  * la regla de negocio "no pueden existir dos paquetes con el mismo código".</p>
