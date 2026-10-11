@@ -1,8 +1,8 @@
-package com.quindioexpress.model.comparator;
-
-import com.quindioexpress.model.Parcel;
+package com.uniquindio.edu.strucst.comparator;
 
 import java.util.Comparator;
+
+import com.uniquindio.edu.strucst.model.Parcel;
 
 /**
  * Catálogo de criterios de ordenamiento alternativos al orden natural de {@link Parcel}.

@@ -1,4 +1,4 @@
-package com.quindioexpress.exception;
+package com.uniquindio.edu.strucst.exception;
 
 /**
  * Se lanza al intentar registrar un paquete o repartidor cuyo identificador ya existe.

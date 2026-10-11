@@ -1,4 +1,4 @@
-package com.quindioexpress.model;
+package com.uniquindio.edu.strucst.model;
 
 import java.util.Objects;
 

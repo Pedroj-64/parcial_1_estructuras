@@ -1,4 +1,4 @@
-package com.quindioexpress.exception;
+package com.uniquindio.edu.strucst.exception;
 
 /**
  * Se lanza cuando un dato no cumple las reglas de validación (peso, prioridad,

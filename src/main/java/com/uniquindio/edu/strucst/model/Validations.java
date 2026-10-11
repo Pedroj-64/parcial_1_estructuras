@@ -1,6 +1,6 @@
-package com.quindioexpress.model;
+package com.uniquindio.edu.strucst.model;
 
-import com.quindioexpress.exception.ValidationException;
+import com.uniquindio.edu.strucst.exception.ValidationException;
 
 /**
  * Utilidades de validación compartidas por las entidades del dominio.

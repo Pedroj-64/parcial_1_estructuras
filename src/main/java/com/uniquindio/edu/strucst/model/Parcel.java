@@ -1,15 +1,15 @@
-package com.quindioexpress.model;
-
-import com.quindioexpress.exception.ValidationException;
+package com.uniquindio.edu.strucst.model;
 
 import java.util.Objects;
+
+import com.uniquindio.edu.strucst.exception.ValidationException;
 
 /**
  * Paquete registrado durante una jornada en el centro de distribución.
  *
  * <p><b>Orden natural:</b> los paquetes se comparan por su código en orden ascendente
  * ({@link Comparable}). Los criterios alternativos (prioridad, peso, tiempo) viven en
- * {@link com.quindioexpress.model.comparator.ParcelComparators} y no alteran este orden.</p>
+ * {@link com.uniquindio.edu.strucst.comparator.ParcelComparators} y no alteran este orden.</p>
  *
  * <p><b>Identidad:</b> dos paquetes son iguales si tienen el mismo código, coherente con
  * la regla de negocio "no pueden existir dos paquetes con el mismo código".</p>

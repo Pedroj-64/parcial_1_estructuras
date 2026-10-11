@@ -1,4 +1,4 @@
-package com.quindioexpress.model;
+package com.uniquindio.edu.strucst.model;
 
 /**
  * Ciclo de vida de un paquete dentro de la jornada.

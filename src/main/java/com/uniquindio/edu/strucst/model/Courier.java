@@ -1,4 +1,4 @@
-package com.quindioexpress.model;
+package com.uniquindio.edu.strucst.model;
 
 /**
  * Repartidor encargado de entregar paquetes en una zona (municipio).

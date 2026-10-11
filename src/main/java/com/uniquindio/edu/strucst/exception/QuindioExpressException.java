@@ -1,4 +1,4 @@
-package com.quindioexpress.exception;
+package com.uniquindio.edu.strucst.exception;
 
 /**
  * Excepción base del dominio. Todas las violaciones de reglas de negocio de

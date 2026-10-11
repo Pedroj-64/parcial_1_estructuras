@@ -1,4 +1,4 @@
-package com.quindioexpress.exception;
+package com.uniquindio.edu.strucst.exception;
 
 /**
  * Se lanza cuando se solicita un paquete o repartidor que no está registrado.

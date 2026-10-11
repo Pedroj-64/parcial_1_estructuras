@@ -1,4 +1,4 @@
-package com.quindioexpress.exception;
+package com.uniquindio.edu.strucst.exception;
 
 /**
  * Se lanza cuando una asignación o entrega viola las reglas de despacho: repartidor no
