@@ -24,7 +24,7 @@ public class Parcel implements Comparable<Parcel> {
     /** Prioridad máxima permitida. */
     public static final int MAX_PRIORITY = 5;
     /** Prioridad asignada cuando no se indica una. */
-    public static final int DEFAULT_PRIORITY = 5;
+    public static final int DEFAULT_PRIORITY = 3;
 
     private final String code;
     private final String destination;
