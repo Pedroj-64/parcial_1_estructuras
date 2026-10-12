@@ -1,8 +1,0 @@
-com/uniquindio/edu/strucst/TestParcels.class
-com/uniquindio/edu/strucst/dispatch/DispatchStrategyTest.class
-com/uniquindio/edu/strucst/AppTest.class
-com/uniquindio/edu/strucst/algorithm/AlgorithmsTest.class
-com/uniquindio/edu/strucst/model/ParcelTest.class
-com/uniquindio/edu/strucst/structure/SinglyLinkedListTest.class
-com/uniquindio/edu/strucst/repository/ParcelRepositoryTest.class
-com/uniquindio/edu/strucst/facade/DistributionCenterTest.class
