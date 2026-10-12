@@ -16,9 +16,9 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import com.uniquindio.edu.strucst.exception.DuplicateEntityException;
+import com.uniquindio.edu.strucst.exception.EntityNotFoundException;
 import com.uniquindio.edu.strucst.model.Parcel;
 import com.uniquindio.edu.strucst.model.ParcelStatus;
-
 
 public class ParcelRepository {
     private final Map<String, Parcel> parcelsByCode = new HashMap<>();
@@ -58,6 +58,11 @@ public class ParcelRepository {
         return pendingList;
     }
 
+    public Parcel getByCode(String code) {
+        return findByCode(code).orElseThrow(
+                () -> new EntityNotFoundException("No existe un paquete con el código " + code));
+    }
+
     public List<Parcel> findAllInRegistrationOrder() {
         return Collections.unmodifiableList(registrationOrder);
     }
@@ -87,6 +92,10 @@ public class ParcelRepository {
         List<Parcel> copy = new ArrayList<>(registrationOrder);
         Collections.sort(copy);
         return copy;
+    }
+
+    public Set<String> findDestinations() {
+        return Collections.unmodifiableSet(destinations);
     }
 
     public int count() {

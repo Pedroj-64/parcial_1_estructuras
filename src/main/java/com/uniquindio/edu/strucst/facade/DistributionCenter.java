@@ -10,6 +10,9 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.SortedSet;
 
+import com.uniquindio.edu.strucst.algorithm.BinarySearch;
+import com.uniquindio.edu.strucst.algorithm.DivideAndConquer;
+import com.uniquindio.edu.strucst.algorithm.RecursiveAnalytics;
 import com.uniquindio.edu.strucst.dispatch.ArrivalOrderDispatchStrategy;
 import com.uniquindio.edu.strucst.dispatch.DispatchMode;
 import com.uniquindio.edu.strucst.dispatch.DispatchStrategy;
@@ -22,6 +25,7 @@ import com.uniquindio.edu.strucst.model.comparator.ParcelComparators;
 import com.uniquindio.edu.strucst.repository.CourierRepository;
 import com.uniquindio.edu.strucst.repository.ParcelRepository;
 import com.uniquindio.edu.strucst.service.AssignmentService;
+import com.uniquindio.edu.strucst.service.DeliveryHistory;
 
 public class DistributionCenter {
     private final ParcelRepository parcels;
