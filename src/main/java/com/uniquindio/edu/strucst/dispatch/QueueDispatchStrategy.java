@@ -5,9 +5,10 @@ import java.util.Queue;
 
 import com.uniquindio.edu.strucst.model.Parcel;
 
+//Clase abstracta que implementa la interfaz DispatchStrategy y proporciona una implementación básica para las operaciones de despacho utilizando una cola.
 public abstract class QueueDispatchStrategy implements DispatchStrategy {
     private final Queue<Parcel> queue;
-
+    //Clase base para las estregias usa metodos simples
     protected QueueDispatchStrategy(Queue<Parcel> queue) {
         this.queue = queue;
     }

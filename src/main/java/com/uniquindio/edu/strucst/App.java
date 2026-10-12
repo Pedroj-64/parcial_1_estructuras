@@ -21,8 +21,6 @@ public class App {
     static Scanner sc = new Scanner(System.in);
     static DistributionCenter distributionCenter = new DistributionCenter();
 
-
-
     public static void main(String[] args) throws InterruptedException {
         boolean running = true;
         while (running) {
@@ -88,8 +86,7 @@ public class App {
     }
 
     static void registerDataTest() {
-        distributionCenter.registerCouriers(SampleData.couriers());
-        distributionCenter.registerParcels(SampleData.parcels());
+        SampleData.loadInto(distributionCenter);
         IO.println("Datos de prueba registrados.");
     }
 
@@ -115,9 +112,11 @@ public class App {
         IO.println("1. Código  2. Prioridad  3. Peso  4. Tiempo");
         switch (readInt("Criterio: ")) {
             case 1 -> printList("Orden por código", distributionCenter.parcelsSortedByCode());
-            case 2 -> printList("Orden por prioridad", distributionCenter.parcelsSortedBy(ParcelComparators.BY_PRIORITY_DESC));
+            case 2 -> printList("Orden por prioridad",
+                    distributionCenter.parcelsSortedBy(ParcelComparators.BY_PRIORITY_DESC));
             case 3 -> printList("Orden por peso", distributionCenter.parcelsSortedBy(ParcelComparators.BY_WEIGHT_DESC));
-            case 4 -> printList("Orden por tiempo", distributionCenter.parcelsSortedBy(ParcelComparators.BY_ESTIMATED_TIME_ASC));
+            case 4 -> printList("Orden por tiempo",
+                    distributionCenter.parcelsSortedBy(ParcelComparators.BY_ESTIMATED_TIME_ASC));
             default -> IO.println("Criterio inválido.");
         }
     }

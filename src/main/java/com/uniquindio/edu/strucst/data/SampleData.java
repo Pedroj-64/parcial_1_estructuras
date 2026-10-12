@@ -6,6 +6,10 @@ import com.uniquindio.edu.strucst.facade.DistributionCenter;
 import com.uniquindio.edu.strucst.model.Courier;
 import com.uniquindio.edu.strucst.model.Parcel;
 
+
+/**
+ * Clase que proporciona datos de ejemplo para la aplicación.
+ */
 public class SampleData {
 
     private SampleData() {
