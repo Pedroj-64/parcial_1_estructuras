@@ -1,11 +1,6 @@
 package com.uniquindio.edu.strucst.model;
 
-/**
- * Repartidor encargado de entregar paquetes en una zona (municipio).
- *
- * <p>Dos repartidores son iguales si tienen la misma identificación. Solo la
- * disponibilidad cambia durante la jornada.</p>
- */
+
 public class Courier {
 
     private final String id;
@@ -13,12 +8,7 @@ public class Courier {
     private final String zone;
     private boolean available;
 
-    /**
-     * @param id        identificación única del repartidor
-     * @param name      nombre completo
-     * @param zone      municipio o zona principal de entregas
-     * @param available si puede recibir una nueva asignación
-     */
+
     public Courier(String id, String name, String zone, boolean available) {
         this.id = Validations.requireText(id, "identificación");
         this.name = Validations.requireText(name, "nombre");
@@ -26,7 +16,7 @@ public class Courier {
         this.available = available;
     }
 
-    /** Crea un repartidor disponible. */
+
     public Courier(String id, String name, String zone) {
         this(id, name, zone, true);
     }
@@ -47,20 +37,17 @@ public class Courier {
         return available;
     }
 
-    /** Marca al repartidor como ocupado (no puede recibir asignaciones). */
+
     public void markBusy() {
         this.available = false;
     }
 
-    /** Marca al repartidor como disponible para una nueva asignación. */
+
     public void markAvailable() {
         this.available = true;
     }
 
-    /**
-     * @param destination municipio destino de un paquete
-     * @return {@code true} si la zona del repartidor corresponde a ese destino
-     */
+
     public boolean servesZone(String destination) {
         return zone.equalsIgnoreCase(destination);
     }
