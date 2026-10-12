@@ -2,6 +2,7 @@ package com.uniquindio.edu.strucst.model;
 
 import java.util.Objects;
 
+//Clase que representa la asignación de un paquete a un repartidor. Contiene el paquete y el repartidor asignado.
 public record Assignment(Parcel parcel, Courier courier) {
 
     public Assignment {

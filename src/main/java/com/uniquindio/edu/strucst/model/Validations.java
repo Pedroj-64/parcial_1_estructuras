@@ -1,7 +1,7 @@
 package com.uniquindio.edu.strucst.model;
 
 import com.uniquindio.edu.strucst.exception.ValidationException;
-
+//Validaciones para los campos de los paquetes y repartidores, para que no sean nulos ni vacios
 final class Validations {
 
     private Validations() {

@@ -1,5 +1,5 @@
 package com.uniquindio.edu.strucst.model;
-
+//Clase de repartidor normalito
 public class Courier {
 
     private final String id;

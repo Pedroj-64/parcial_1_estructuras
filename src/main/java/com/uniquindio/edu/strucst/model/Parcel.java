@@ -3,7 +3,7 @@ package com.uniquindio.edu.strucst.model;
 import java.util.Objects;
 
 import com.uniquindio.edu.strucst.exception.ValidationException;
-
+//El paquete normal solo que este tiene mas validaciones
 public class Parcel implements Comparable<Parcel> {
 
     public static final int MIN_PRIORITY = 1;
