@@ -1,4 +1,8 @@
 /home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/App.java
+/home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/algorithm/BinarySearch.java
+/home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/algorithm/CallTrace.java
+/home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/algorithm/DivideAndConquer.java
+/home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/algorithm/RecursiveAnalytics.java
 /home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/data/SampleData.java
 /home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/dispatch/ArrivalOrderDispatchStrategy.java
 /home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/dispatch/DispatchMode.java
@@ -20,5 +24,6 @@
 /home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/repository/CourierRepository.java
 /home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/repository/ParcelRepository.java
 /home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/service/AssignmentService.java
+/home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/service/DeliveryHistory.java
 /home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/structure/SimpleList.java
 /home/ajolote/Documentos/Codigo/parcial 1 Estructuras/parcial_1_estructuras/src/main/java/com/uniquindio/edu/strucst/structure/SinglyLinkedList.java
