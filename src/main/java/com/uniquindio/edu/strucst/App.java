@@ -23,7 +23,7 @@ public class App {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         boolean running = true;
         while (running) {
             showMenu();
@@ -60,7 +60,7 @@ public class App {
         IO.println(" 0. Salir");
     }
 
-    static boolean executeOption(int option) {
+    static boolean executeOption(int option) throws InterruptedException {
         switch (option) {
             case 0 -> {
                 return false;
@@ -83,6 +83,7 @@ public class App {
             case 16 -> showCurrentCourier();
             default -> IO.println("Opción inválida.");
         }
+        Thread.sleep(1000);
         return true;
     }
 
