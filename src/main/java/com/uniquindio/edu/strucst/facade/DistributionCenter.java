@@ -30,15 +30,15 @@ import com.uniquindio.edu.strucst.service.DeliveryHistory;
 /**
  * Punto de entrada principal para operar el centro de distribución.
  *
- * <p>La fachada reúne los repositorios, las estrategias de despacho, el servicio
+ * La fachada reúne los repositorios, las estrategias de despacho, el servicio
  * de asignaciones y el historial de entregas. El código cliente puede registrar
  * paquetes y repartidores, consultar la información disponible, despachar
  * paquetes y ejecutar los algoritmos del dominio sin coordinar directamente
- * todos esos componentes.</p>
+ * todos esos componentes.
  *
  * <p>Los paquetes se registran en las estrategias configuradas al momento de
  * crearlos. Por eso {@link #peekNextParcel(DispatchMode)} y
- * {@link #dispatchNext(DispatchMode)} respetan el modo de despacho solicitado.</p>
+ * {@link #dispatchNext(DispatchMode)} respetan el modo de despacho solicitado.
  */
 public class DistributionCenter {
     private final ParcelRepository parcels;
@@ -50,7 +50,7 @@ public class DistributionCenter {
     /**
      * Crea un centro con repositorios, historial y estrategias predeterminadas.
      *
-     * <p>Las estrategias configuradas son orden de llegada y prioridad.</p>
+     * Las estrategias configuradas son orden de llegada y prioridad.
      */
     public DistributionCenter() {
         this(new ParcelRepository(), new CourierRepository(), new DeliveryHistory(),

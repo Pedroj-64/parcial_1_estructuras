@@ -4,9 +4,7 @@ import java.util.Objects;
 
 import com.uniquindio.edu.strucst.exception.ValidationException;
 
-
 public class Parcel implements Comparable<Parcel> {
-
 
     public static final int MIN_PRIORITY = 1;
 
@@ -20,7 +18,6 @@ public class Parcel implements Comparable<Parcel> {
     private final int priority;
     private final int estimatedMinutes;
     private ParcelStatus status = ParcelStatus.PENDING;
-
 
     public Parcel(String code, String destination, double weight, int priority, int estimatedMinutes) {
         this.code = Validations.requireText(code, "código");
@@ -39,7 +36,6 @@ public class Parcel implements Comparable<Parcel> {
         this.priority = priority;
         this.estimatedMinutes = estimatedMinutes;
     }
-
 
     public Parcel(String code, String destination, double weight, int estimatedMinutes) {
         this(code, destination, weight, DEFAULT_PRIORITY, estimatedMinutes);
@@ -69,16 +65,13 @@ public class Parcel implements Comparable<Parcel> {
         return status;
     }
 
-
     public boolean isPending() {
         return status == ParcelStatus.PENDING;
     }
 
-
     public void changeStatus(ParcelStatus newStatus) {
         this.status = Objects.requireNonNull(newStatus, "El estado no puede ser nulo");
     }
-
 
     @Override
     public int compareTo(Parcel other) {
@@ -99,7 +92,6 @@ public class Parcel implements Comparable<Parcel> {
     public String toString() {
         return code;
     }
-
 
     public String describe() {
         return String.format("%s | destino=%s | peso=%.1f kg | prioridad=%d | tiempo=%d min | estado=%s",

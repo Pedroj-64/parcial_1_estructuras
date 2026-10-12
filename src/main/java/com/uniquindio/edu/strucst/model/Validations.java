@@ -2,12 +2,10 @@ package com.uniquindio.edu.strucst.model;
 
 import com.uniquindio.edu.strucst.exception.ValidationException;
 
-
 final class Validations {
 
     private Validations() {
     }
-
 
     static String requireText(String value, String fieldName) {
         if (value == null || value.isBlank()) {

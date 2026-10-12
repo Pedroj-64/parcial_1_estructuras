@@ -2,7 +2,6 @@ package com.uniquindio.edu.strucst.model;
 
 import java.util.Objects;
 
-
 public record Assignment(Parcel parcel, Courier courier) {
 
     public Assignment {

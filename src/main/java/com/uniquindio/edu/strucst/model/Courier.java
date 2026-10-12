@@ -1,6 +1,5 @@
 package com.uniquindio.edu.strucst.model;
 
-
 public class Courier {
 
     private final String id;
@@ -8,14 +7,12 @@ public class Courier {
     private final String zone;
     private boolean available;
 
-
     public Courier(String id, String name, String zone, boolean available) {
         this.id = Validations.requireText(id, "identificación");
         this.name = Validations.requireText(name, "nombre");
         this.zone = Validations.requireText(zone, "zona");
         this.available = available;
     }
-
 
     public Courier(String id, String name, String zone) {
         this(id, name, zone, true);
@@ -37,16 +34,13 @@ public class Courier {
         return available;
     }
 
-
     public void markBusy() {
         this.available = false;
     }
 
-
     public void markAvailable() {
         this.available = true;
     }
-
 
     public boolean servesZone(String destination) {
         return zone.equalsIgnoreCase(destination);
