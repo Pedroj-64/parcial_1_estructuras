@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ *  Clase para realizar un seguimiento de las llamadas recursivas. creada
+ * por @author: @Claude
+ * se usa pues se considero necesario para el seguimiento de las llamadas
+ * recursivas y la profundidad maxima de la pila de llamadas
+ *
+ */
 public final class CallTrace {
 
     private static final CallTrace DISABLED = new CallTrace(false);
@@ -18,16 +24,13 @@ public final class CallTrace {
         this.enabled = enabled;
     }
 
-
     public static CallTrace enabled() {
         return new CallTrace(true);
     }
 
-
     public static CallTrace disabled() {
         return DISABLED;
     }
-
 
     public void enter(String call) {
         if (!enabled) {
@@ -38,7 +41,6 @@ public final class CallTrace {
         lines.add(indent() + "→ " + call + "   [marcos en pila: " + depth + "]");
     }
 
-
     public void exit(String call, Object result) {
         if (!enabled) {
             return;
@@ -47,18 +49,15 @@ public final class CallTrace {
         depth--;
     }
 
-
     public void note(String note) {
         if (enabled) {
             lines.add(indent() + "  · " + note);
         }
     }
 
-
     public List<String> lines() {
         return Collections.unmodifiableList(lines);
     }
-
 
     public int maxDepth() {
         return maxDepth;

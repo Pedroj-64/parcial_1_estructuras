@@ -5,12 +5,18 @@ import java.util.List;
 import java.util.Objects;
 
 
+/**
+ * Clase que implementa el algoritmo de divide y vencerás.
+ * usa la misma mecanica que la busqueda binaria, pero en este caso se busca el maximo de una lista de elementos
+ * 
+ */
 public final class DivideAndConquer {
 
+    // Constructor privado pues todo es static
     private DivideAndConquer() {
     }
 
-
+    
     public static <T> T maximum(List<? extends T> elements, Comparator<? super T> comparator) {
         return maximum(elements, comparator, CallTrace.disabled());
     }
