@@ -12,10 +12,7 @@ import com.uniquindio.edu.strucst.model.Courier;
 import com.uniquindio.edu.strucst.model.Parcel;
 import com.uniquindio.edu.strucst.model.comparator.ParcelComparators;
 
-/**
- * Hello world!
- *
- */
+
 public class App {
 
     static Scanner sc = new Scanner(System.in);
