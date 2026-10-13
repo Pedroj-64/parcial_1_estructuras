@@ -1,6 +1,7 @@
 package com.uniquindio.edu.strucst;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import com.uniquindio.edu.strucst.data.SampleData;
@@ -13,25 +14,50 @@ import com.uniquindio.edu.strucst.model.Parcel;
 import com.uniquindio.edu.strucst.model.comparator.ParcelComparators;
 
 
+/**
+ * Interfaz de consola de QuindíoExpress.
+ *
+ * Muestra el menú principal, lee las opciones del usuario y delega cada
+ * operación en {@link DistributionCenter}. Los errores de negocio y de entrada
+ * se informan por consola sin interrumpir el programa.
+ */
 public class App {
 
     static Scanner sc = new Scanner(System.in);
     static DistributionCenter distributionCenter = new DistributionCenter();
 
-    public static void main(String[] args) throws InterruptedException {
+    /**
+     * Ejecuta el ciclo principal del menú hasta que el usuario elija salir.
+     *
+     * <p>El ciclo termina también si la entrada estándar se cierra o si el hilo
+     * es interrumpido. Cualquier otro error inesperado se informa y el menú
+     * continúa.
+     *
+     * @param args argumentos de línea de comandos (no se usan)
+     */
+    public static void main(String[] args) {
         boolean running = true;
         while (running) {
-            showMenu();
-            int option = readInt("Seleccione una opción: ");
             try {
-                running = executeOption(option);
+                showMenu();
+                running = executeOption(readInt("Seleccione una opción: "));
             } catch (QuindioExpressException | IllegalArgumentException e) {
                 IO.println("No se pudo completar la operación: " + e.getMessage());
+            } catch (NoSuchElementException e) {
+                IO.println("Entrada cerrada, no se pueden leer más datos.");
+                running = false;
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                IO.println("Ejecución interrumpida.");
+                running = false;
+            } catch (RuntimeException e) {
+                IO.println("Error inesperado: " + e);
             }
         }
         IO.println("Programa finalizado.");
     }
 
+    /** Imprime las opciones disponibles del menú principal. */
     static void showMenu() {
         IO.println();
         IO.println("========= QUINDIOEXPRESS =========");
@@ -55,6 +81,16 @@ public class App {
         IO.println(" 0. Salir");
     }
 
+    /**
+     * Ejecuta la operación asociada a la opción del menú y hace una pausa breve
+     * para que el usuario alcance a leer el resultado.
+     *
+     * @param option número de opción elegida
+     * @return {@code false} si el usuario eligió salir; {@code true} en caso contrario
+     * @throws InterruptedException si el hilo es interrumpido durante la pausa
+     * @throws QuindioExpressException si la operación incumple una regla de negocio
+     * @throws IllegalArgumentException si los datos ingresados no son válidos
+     */
     static boolean executeOption(int option) throws InterruptedException {
         switch (option) {
             case 0 -> {
@@ -82,11 +118,13 @@ public class App {
         return true;
     }
 
+    /** Carga los datos de prueba en el centro de distribución. */
     static void registerDataTest() {
         SampleData.loadInto(distributionCenter);
         IO.println("Datos de prueba registrados.");
     }
 
+    /** Busca un paquete por código e imprime su descripción si existe. */
     static void findParcel() {
         String code = readText("Código del paquete: ");
         distributionCenter.findParcel(code)
@@ -94,17 +132,20 @@ public class App {
                         () -> IO.println("No existe un paquete con ese código."));
     }
 
+    /** Muestra los municipios sin repetir, sin ordenar y ordenados. */
     static void showDestinations() {
         IO.println("Municipios: " + distributionCenter.destinations());
         IO.println("Municipios ordenados: " + distributionCenter.destinationsSorted());
     }
 
+    /** Lista los paquetes del municipio indicado por el usuario. */
     static void showParcelsByDestination() {
         String destination = readText("Municipio: ");
         printList("Paquetes de " + destination,
                 distributionCenter.parcelsByDestination().getOrDefault(destination, List.of()));
     }
 
+    /** Lista los paquetes según el criterio de orden elegido (código, prioridad, peso o tiempo). */
     static void showSortedParcels() {
         IO.println("1. Código  2. Prioridad  3. Peso  4. Tiempo");
         switch (readInt("Criterio: ")) {
@@ -118,48 +159,61 @@ public class App {
         }
     }
 
+    /**
+     * Pide el modo de despacho al usuario.
+     *
+     * @return {@link DispatchMode#PRIORITY} si elige 2; en otro caso, orden de llegada
+     */
     static DispatchMode readDispatchMode() {
         IO.println("1. Orden de llegada  2. Prioridad");
         return readInt("Modo: ") == 2 ? DispatchMode.PRIORITY : DispatchMode.ARRIVAL_ORDER;
     }
 
+    /** Muestra el siguiente paquete a despachar sin retirarlo. */
     static void showNextParcel() {
         distributionCenter.peekNextParcel(readDispatchMode())
                 .ifPresentOrElse(parcel -> IO.println("Siguiente paquete: " + parcel.describe()),
                         () -> IO.println("No hay paquetes pendientes."));
     }
 
+    /** Despacha el siguiente paquete según el modo elegido. */
     static void dispatchNextParcel() {
         Assignment assignment = distributionCenter.dispatchNext(readDispatchMode());
         IO.println("Paquete despachado: " + assignment);
     }
 
+    /** Asigna un paquete a un repartidor, ambos indicados por el usuario. */
     static void assignParcel() {
         String code = readText("Código del paquete: ");
         String courierId = readText("Identificación del repartidor: ");
         IO.println("Asignación realizada: " + distributionCenter.assign(code, courierId));
     }
 
+    /** Registra la entrega del paquete cuyo código indica el usuario. */
     static void registerDelivery() {
         String code = readText("Código del paquete entregado: ");
         IO.println("Entrega registrada: " + distributionCenter.registerDelivery(code));
     }
 
+    /** Imprime el historial de entregas. */
     static void showDeliveryHistory() {
         IO.println("Historial de entregas:");
         IO.println(distributionCenter.deliveryHistory());
     }
 
+    /** Calcula e imprime el peso total de los paquetes hacia un municipio (recursivo). */
     static void showTotalWeight() {
         String destination = readText("Municipio: ");
         IO.println("Peso total: " + distributionCenter.totalWeightTo(destination) + " kg");
     }
 
+    /** Cuenta los paquetes con prioridad igual o superior a la indicada (recursivo). */
     static void showPriorityCount() {
         int minimum = readInt("Prioridad mínima (1-5): ");
         IO.println("Cantidad de paquetes: " + distributionCenter.countWithMinimumPriority(minimum));
     }
 
+    /** Busca un paquete por código con búsqueda binaria sobre la lista ordenada. */
     static void binarySearchParcel() {
         String code = readText("Código a buscar: ");
         distributionCenter.binarySearchByCode(distributionCenter.parcelsSortedByCode(), code)
@@ -167,18 +221,28 @@ public class App {
                         () -> IO.println("No existe un paquete con ese código."));
     }
 
+    /** Imprime los repartidores registrados. */
     static void showCurrentCourier() {
         for (Courier r : distributionCenter.couriers()) {
             IO.println(r);
         }
     }
 
+    /** Muestra el paquete más pesado usando divide y vencerás. */
     static void showMostHeaviestAndDivideAndConquer() {
         distributionCenter.heaviestParcel()
                 .ifPresentOrElse(parcel -> IO.println("El paquete más pesado es: " + parcel.describe()),
                         () -> IO.println("No hay paquetes registrados."));
     }
 
+    /**
+     * Lee un número decimal, repitiendo la solicitud hasta que sea válido.
+     * Acepta coma o punto como separador.
+     *
+     * @param message texto que se muestra al usuario
+     * @return el número ingresado
+     * @throws NoSuchElementException si la entrada estándar se cierra
+     */
     static double realDecimal(String message) {
         while (true) {
             try {
@@ -190,6 +254,13 @@ public class App {
         }
     }
 
+    /**
+     * Lee un entero, repitiendo la solicitud hasta que sea válido.
+     *
+     * @param message texto que se muestra al usuario
+     * @return el entero ingresado
+     * @throws NoSuchElementException si la entrada estándar se cierra
+     */
     static int readInt(String message) {
         while (true) {
             try {
@@ -201,11 +272,24 @@ public class App {
         }
     }
 
+    /**
+     * Lee una línea de texto sin espacios en los extremos.
+     *
+     * @param message texto que se muestra al usuario
+     * @return el texto ingresado
+     * @throws NoSuchElementException si la entrada estándar se cierra
+     */
     static String readText(String message) {
         IO.println(message);
         return sc.nextLine().trim();
     }
 
+    /**
+     * Imprime una lista numerada de paquetes bajo un título.
+     *
+     * @param titulo encabezado de la lista
+     * @param list paquetes que se van a imprimir
+     */
     static void printList(String titulo, List<Parcel> list) {
         IO.println(titulo + ":");
         for (int i = 0; i < list.size(); i++) {
